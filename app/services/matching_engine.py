@@ -8,7 +8,7 @@ from app.utils.distance import haversine
 
 class MatchingEngine:
 
-    async def match_cab(self, session, ride_request):
+    async def match_cab(self, session, ride_request, luggage=1):
         result = await session.execute(
             select(Cab).where(
                 Cab.available_seats > 0,
@@ -22,7 +22,7 @@ class MatchingEngine:
         min_cost = float("inf")
 
         for cab in cabs:
-            if cab.available_luggage < 1:  # assume luggage 1 for now
+            if cab.available_luggage < luggage:
                 continue
 
             cost = self.calculate_cost(cab, ride_request)
