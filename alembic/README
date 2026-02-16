@@ -1,1 +1,57 @@
-Generic single-database configuration.
+# Smart Airport Pool
+
+A smart ride-pooling application for airport transfers, built with FastAPI and SQLAlchemy (Async).
+
+## Features
+
+- **Ride Matching**: Engine to pair passengers with similar routes.
+- **Dynamic Pricing**: Calculates fares based on distance and demand.
+- **Cab Booking**: Manages cab availability and assignments.
+- **Async Database**: Uses SQLite with `aiosqlite` for non-blocking database operations.
+
+## Prerequisites
+
+- Python 3.8 or higher
+
+## Installation
+
+1. **Clone the repository** (if you haven't already).
+
+2. **Create a virtual environment**:
+   ```bash
+   # Windows
+   python -m venv venv
+   venv\Scripts\activate
+
+   # macOS/Linux
+   python3 -m venv venv
+   source venv/bin/activate
+   ```
+
+3. **Install dependencies**:
+   Create a `requirements.txt` file or install the packages directly:
+   ```bash
+   pip install fastapi uvicorn sqlalchemy aiosqlite jinja2 pydantic
+   ```
+
+## Running the Application
+
+1. Navigate to the project root directory (where this README is located).
+
+2. Run the server using Uvicorn:
+   ```bash
+   uvicorn app.main:app --reload
+   ```
+   
+   Alternatively, you can run the Python module directly:
+   ```bash
+   python -m app.main
+   ```
+
+3. Open your browser and navigate to `http://127.0.0.1:8000` to see the home page.
+
+## API Documentation
+
+FastAPI provides automatic interactive documentation. Once the server is running, visit:
+- **Swagger UI**: http://127.0.0.1:8000/docs
+- **ReDoc**: http://127.0.0.1:8000/redoc
