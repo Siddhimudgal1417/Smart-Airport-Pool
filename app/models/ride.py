@@ -1,11 +1,12 @@
-from sqlalchemy import Column, Integer, ForeignKey, String
+from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
-from app.db.base import Base
+from app.database import Base
 
 class Ride(Base):
     __tablename__ = "rides"
-
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, index=True)
     cab_id = Column(Integer, ForeignKey("cabs.id"))
     status = Column(String, default="ONGOING")
-    passengers = relationship("RideRequest", backref="ride")
+    
+    cab = relationship("app.models.cab.Cab")
+    passengers = relationship("app.models.passenger.Passenger", back_populates="ride")

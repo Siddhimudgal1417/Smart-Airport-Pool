@@ -1,12 +1,10 @@
-from sqlalchemy import Column, Integer, Float, String, ForeignKey
-from app.db.base import Base
+from sqlalchemy import Column, Integer, Float, String
+from app.database import Base
 
 class RideRequest(Base):
     __tablename__ = "ride_requests"
-
-    id = Column(Integer, primary_key=True)
-    passenger_id = Column(Integer, ForeignKey("passengers.id"))
-    ride_id = Column(Integer, ForeignKey("rides.id"), nullable=True)
+    id = Column(Integer, primary_key=True, index=True)
+    passenger_id = Column(Integer)
     pickup_lat = Column(Float)
     pickup_lng = Column(Float)
     drop_lat = Column(Float)

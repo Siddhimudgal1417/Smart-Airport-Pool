@@ -9,22 +9,30 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Get form data
         const formData = new FormData(form);
-        const data = {
-            passenger_id: 1, // Default for demo
-            pickup_lat: parseFloat(formData.get('pickupLat')),
-            pickup_lng: parseFloat(formData.get('pickupLng')),
-            drop_lat: parseFloat(formData.get('dropLat')),
-            drop_lng: parseFloat(formData.get('dropLng')),
-            detour_tolerance_percent: parseFloat(formData.get('detourTolerance'))
-        };
 
         // Show loading
         const submitBtn = form.querySelector('.btn-primary');
         const originalText = submitBtn.textContent;
-        submitBtn.innerHTML = '<span class="loading"></span> Requesting...';
+        submitBtn.innerHTML = '<span class="loading"></span> Processing...';
         submitBtn.disabled = true;
 
         try {
+            // Geocode locations to coordinates
+            console.log('Geocoding locations...');
+            const pickupCoords = await getCoordinates(formData.get('pickupLocation'));
+            const dropCoords = await getCoordinates(formData.get('dropLocation'));
+
+            const data = {
+                passenger_id: 1, // Default for demo
+                pickup_lat: pickupCoords.lat,
+                pickup_lng: pickupCoords.lng,
+                drop_lat: dropCoords.lat,
+                drop_lng: dropCoords.lng,
+                detour_tolerance_percent: parseFloat(formData.get('detourTolerance'))
+            };
+
+            console.log('Sending ride request:', data);
+
             const response = await fetch('/ride/request', {
                 method: 'POST',
                 headers: {
@@ -33,7 +41,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 body: JSON.stringify(data)
             });
 
-            const result = await response.json();
+            const responseText = await response.text();
+            let result;
+            try {
+                result = JSON.parse(responseText);
+            } catch (e) {
+                throw new Error('Server error: ' + (responseText || response.statusText));
+            }
 
             if (response.ok) {
                 showResponse('Ride request submitted successfully! ' + result.message, 'success');
@@ -56,6 +70,16 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.disabled = false;
         }
     });
+
+    async function getCoordinates(address) {
+        const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`);
+        const data = await response.json();
+        
+        if (data && data.length > 0) {
+            return { lat: parseFloat(data[0].lat), lng: parseFloat(data[0].lon) };
+        }
+        throw new Error(`Location not found: ${address}`);
+    }
 
     function showResponse(message, type) {
         responseDiv.textContent = message;

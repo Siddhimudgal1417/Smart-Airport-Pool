@@ -1,4 +1,5 @@
 from sqlalchemy import select
+from sqlalchemy.orm import selectinload
 from app.models.cab import Cab
 from app.models.ride import Ride
 from app.models.ride_request import RideRequest
@@ -34,24 +35,29 @@ class MatchingEngine:
 
     def calculate_cost(self, cab, ride_request):
         return haversine(
+            cab.current_lat,
+            cab.current_lng,
             ride_request.pickup_lat,
-            ride_request.pickup_lng,
-            ride_request.drop_lat,
-            ride_request.drop_lng
+            ride_request.pickup_lng
         )
 
     async def find_ride_to_join(self, session, new_request, luggage):
         # Get ongoing rides
-        result = await session.execute(select(Ride).where(Ride.status == "ONGOING"))
+        result = await session.execute(
+            select(Ride)
+            .where(Ride.status == "ONGOING")
+            .options(selectinload(Ride.passengers).selectinload(Passenger.request))
+        )
         rides = result.scalars().all()
 
         for ride in rides:
             cab = await session.get(Cab, ride.cab_id)
-            if cab.available_seats <= 0 or cab.available_luggage < luggage:
+            if not cab or cab.available_seats <= 0 or cab.available_luggage < luggage:
                 continue
 
             # Get current assigned passengers
-            current_requests = [r for r in ride.passengers if r.status == "ASSIGNED"]
+            # Fix: Extract the 'request' object from the passenger, as Passenger model doesn't have lat/lng
+            current_requests = [p.request for p in ride.passengers if p.status == "ASSIGNED" and p.request]
             all_requests = current_requests + [new_request]
 
             if self.check_detour_tolerance(all_requests):
@@ -67,7 +73,8 @@ class MatchingEngine:
         drop_lng = requests[0].drop_lng
 
         # Sort pickups by increasing distance to drop
-        sorted_requests = sorted(requests, key=lambda r: haversine(r.pickup_lat, r.pickup_lng, drop_lat, drop_lng))
+        # For airport drop, we pick up the furthest person first.
+        sorted_requests = sorted(requests, key=lambda r: haversine(r.pickup_lat, r.pickup_lng, drop_lat, drop_lng), reverse=True)
 
         for i, req in enumerate(sorted_requests):
             direct = haversine(req.pickup_lat, req.pickup_lng, drop_lat, drop_lng)
