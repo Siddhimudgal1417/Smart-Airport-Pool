@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Matching - Smart Airport Pool</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', path='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="nav">
+                <a href="/" class="back-btn">← Back to Home</a>
+            </div>
+            <h1 class="page-title">🚗 Smart Matching Technology</h1>
+            <p class="page-subtitle">AI-powered cab assignment for optimal rides</p>
+        </header>
+
+        <main class="main">
+            <div class="content-card">
+                <div class="hero-section">
+                    <div class="hero-icon">🤖</div>
+                    <h2>How Our AI Matching Works</h2>
+                    <p>Experience the future of ride-sharing with our intelligent matching algorithm that considers multiple factors to find your perfect ride.</p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-detail">
+                        <div class="detail-icon">📍</div>
+                        <h3>Location Optimization</h3>
+                        <p>Calculates the most efficient pickup points based on your location and traffic patterns.</p>
+                    </div>
+
+                    <div class="feature-detail">
+                        <div class="detail-icon">🚦</div>
+                        <h3>Route Efficiency</h3>
+                        <p>Analyzes real-time traffic data to ensure the fastest route to your destination.</p>
+                    </div>
+
+                    <div class="feature-detail">
+                        <div class="detail-icon">👥</div>
+                        <h3>Capacity Matching</h3>
+                        <p>Matches you with vehicles that have appropriate seating capacity for your group.</p>
+                    </div>
+
+                    <div class="feature-detail">
+                        <div class="detail-icon">⭐</div>
+                        <h3>Quality Assurance</h3>
+                        <p>Prioritizes drivers with high ratings and positive passenger feedback.</p>
+                    </div>
+
+                    <div class="feature-detail">
+                        <div class="detail-icon">🔄</div>
+                        <h3>Dynamic Adjustments</h3>
+                        <p>Continuously optimizes matches based on changing conditions and preferences.</p>
+                    </div>
+
+                    <div class="feature-detail">
+                        <div class="detail-icon">🎯</div>
+                        <h3>Personalization</h3>
+                        <p>Learns from your preferences to provide better matches over time.</p>
+                    </div>
+                </div>
+
+                <div class="cta-section">
+                    <h3>Ready to Experience Smart Matching?</h3>
+                    <p>Join thousands of satisfied passengers who trust our AI to find their perfect ride.</p>
+                    <a href="/" class="cta-btn">Request a Ride Now</a>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2026 Smart Airport Pool. Powered by AI Technology.</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', path='script.js') }}"></script>
+</body>
+</html>

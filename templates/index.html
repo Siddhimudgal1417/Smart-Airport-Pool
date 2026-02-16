@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Airport Pool</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', path='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <div class="custom-logo">
+                    <div class="car-body">
+                        <div class="car-top"></div>
+                        <div class="car-windows">
+                            <div class="window front-window"></div>
+                            <div class="window rear-window"></div>
+                        </div>
+                        <div class="car-bottom">
+                            <div class="wheel front-wheel">
+                                <div class="wheel-center"></div>
+                            </div>
+                            <div class="wheel rear-wheel">
+                                <div class="wheel-center"></div>
+                            </div>
+                        </div>
+                        <div class="car-smile">😊</div>
+                    </div>
+                    <div class="logo-text">
+                        <h1 class="title">Smart Airport Pool</h1>
+                        <div class="tagline">Ride Together, Fly Better</div>
+                    </div>
+                </div>
+            </div>
+            <p class="subtitle">Connect with fellow travelers and share the journey to the airport</p>
+        </header>
+
+        <main class="main">
+            <div class="card">
+                <h2>Welcome to Smart Airport Pool</h2>
+                <p>Experience seamless airport transportation with our intelligent ride-matching system.</p>
+                <div class="features">
+                    <div class="feature feature-orange">
+                        <div class="icon">🚗</div>
+                        <h3>Smart Matching</h3>
+                        <p>AI-powered cab assignment based on your route and preferences</p>
+                    </div>
+                    <div class="feature feature-blue">
+                        <div class="icon">⚡</div>
+                        <h3>Real-time Updates</h3>
+                        <p>Get live updates on your ride status and ETA</p>
+                    </div>
+                    <div class="feature feature-green">
+                        <div class="icon">🛡️</div>
+                        <h3>Safe & Reliable</h3>
+                        <p>Verified drivers and secure booking process</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Request a Ride</h2>
+                <form id="rideForm" class="ride-form">
+                    <div class="form-group">
+                        <label for="pickupLat">Pickup Latitude:</label>
+                        <input type="number" id="pickupLat" step="any" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pickupLng">Pickup Longitude:</label>
+                        <input type="number" id="pickupLng" step="any" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dropLat">Drop Latitude:</label>
+                        <input type="number" id="dropLat" step="any" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dropLng">Drop Longitude:</label>
+                        <input type="number" id="dropLng" step="any" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="detourTolerance">Detour Tolerance (%):</label>
+                        <input type="number" id="detourTolerance" min="0" max="100" value="20" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Request Ride</button>
+                </form>
+                <div id="response" class="response"></div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2026 Smart Airport Pool. Built with FastAPI.</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', path='script.js') }}"></script>
+</body>
+</html>

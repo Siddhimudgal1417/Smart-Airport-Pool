@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-time Updates - Smart Airport Pool</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', path='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="nav">
+                <a href="/" class="back-btn">← Back to Home</a>
+            </div>
+            <h1 class="page-title">⚡ Real-time Updates</h1>
+            <p class="page-subtitle">Stay informed throughout your journey</p>
+        </header>
+
+        <main class="main">
+            <div class="content-card">
+                <div class="hero-section">
+                    <div class="hero-icon">📱</div>
+                    <h2>Never Wait in Uncertainty</h2>
+                    <p>Get live updates on your ride status, driver location, and estimated arrival times through our advanced tracking system.</p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-detail">
+                        <div class="detail-icon">📍</div>
+                        <h3>Live GPS Tracking</h3>
+                        <p>Watch your driver's location in real-time as they approach your pickup point.</p>
+                    </div>
+
+                    <div class="feature-detail">
+                        <div class="detail-icon">⏰</div>
+                        <h3>Dynamic ETA</h3>
+                        <p>Receive updated estimated time of arrival based on current traffic conditions.</p>
+                    </div>
+
+                    <div class="feature-detail">
+                        <div class="detail-icon">🚨</div>
+                        <h3>Status Notifications</h3>
+                        <p>Get instant alerts for ride confirmation, driver assignment, and arrival.</p>
+                    </div>
+
+                    <div class="feature-detail">
+                        <div class="detail-icon">🚦</div>
+                        <h3>Traffic Alerts</h3>
+                        <p>Be notified of traffic delays, road closures, or route changes immediately.</p>
+                    </div>
+
+                    <div class="feature-detail">
+                        <div class="detail-icon">📞</div>
+                        <h3>Direct Contact</h3>
+                        <p>Easy access to your driver's contact information for coordination.</p>
+                    </div>
+
+                    <div class="feature-detail">
+                        <div class="detail-icon">🔄</div>
+                        <h3>Continuous Updates</h3>
+                        <p>Real-time information updates every 30 seconds during your ride.</p>
+                    </div>
+                </div>
+
+                <div class="demo-section">
+                    <h3>See It In Action</h3>
+                    <div class="demo-card">
+                        <div class="demo-timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-icon">📝</div>
+                                <div class="timeline-content">
+                                    <h4>Ride Requested</h4>
+                                    <p>Your request has been received and is being processed.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-icon">🚗</div>
+                                <div class="timeline-content">
+                                    <h4>Driver Assigned</h4>
+                                    <p>John Doe has been assigned to your ride. ETA: 5 minutes.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-icon">📍</div>
+                                <div class="timeline-content">
+                                    <h4>Driver Arriving</h4>
+                                    <p>Your driver is 1 minute away. Vehicle: Blue Toyota (ABC-123)</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-icon">✅</div>
+                                <div class="timeline-content">
+                                    <h4>Journey Started</h4>
+                                    <p>Enjoy your ride! Track progress in real-time.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cta-section">
+                    <h3>Experience Real-time Updates</h3>
+                    <p>Never wonder where your ride is again. Stay informed every step of the way.</p>
+                    <a href="/" class="cta-btn">Start Your Ride</a>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2026 Smart Airport Pool. Real-time Technology.</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', path='script.js') }}"></script>
+</body>
+</html>
