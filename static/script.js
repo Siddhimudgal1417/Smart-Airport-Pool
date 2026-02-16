@@ -39,7 +39,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 showResponse('Ride request submitted successfully! ' + result.message, 'success');
                 form.reset();
             } else {
-                showResponse('Error: ' + (result.detail || 'Something went wrong'), 'error');
+                let errorMsg = 'Something went wrong';
+                if (result.detail) {
+                    if (Array.isArray(result.detail)) {
+                        errorMsg = result.detail.map(d => d.msg || d.message || (d.loc ? `${d.loc.join('.')}: ${d.type}` : 'Unknown error')).join(', ');
+                    } else {
+                        errorMsg = result.detail;
+                    }
+                }
+                showResponse('Error: ' + errorMsg, 'error');
             }
         } catch (error) {
             showResponse('Network error: ' + error.message, 'error');

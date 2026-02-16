@@ -8,3 +8,4 @@ class Ride(Base):
     id = Column(Integer, primary_key=True)
     cab_id = Column(Integer, ForeignKey("cabs.id"))
     status = Column(String, default="ONGOING")
+    passengers = relationship("RideRequest", backref="ride")

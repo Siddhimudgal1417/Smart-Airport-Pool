@@ -67,23 +67,23 @@
                 <form id="rideForm" class="ride-form">
                     <div class="form-group">
                         <label for="pickupLat">Pickup Latitude:</label>
-                        <input type="number" id="pickupLat" step="any" required>
+                        <input type="number" id="pickupLat" name="pickupLat" step="any" required>
                     </div>
                     <div class="form-group">
                         <label for="pickupLng">Pickup Longitude:</label>
-                        <input type="number" id="pickupLng" step="any" required>
+                        <input type="number" id="pickupLng" name="pickupLng" step="any" required>
                     </div>
                     <div class="form-group">
                         <label for="dropLat">Drop Latitude:</label>
-                        <input type="number" id="dropLat" step="any" required>
+                        <input type="number" id="dropLat" name="dropLat" step="any" required>
                     </div>
                     <div class="form-group">
                         <label for="dropLng">Drop Longitude:</label>
-                        <input type="number" id="dropLng" step="any" required>
+                        <input type="number" id="dropLng" name="dropLng" step="any" required>
                     </div>
                     <div class="form-group">
                         <label for="detourTolerance">Detour Tolerance (%):</label>
-                        <input type="number" id="detourTolerance" min="0" max="100" value="20" required>
+                        <input type="number" id="detourTolerance" name="detourTolerance" min="0" max="100" value="20" required>
                     </div>
                     <button type="submit" class="btn-primary">Request Ride</button>
                 </form>

@@ -6,6 +6,7 @@ class RideRequest(Base):
 
     id = Column(Integer, primary_key=True)
     passenger_id = Column(Integer, ForeignKey("passengers.id"))
+    ride_id = Column(Integer, ForeignKey("rides.id"), nullable=True)
     pickup_lat = Column(Float)
     pickup_lng = Column(Float)
     drop_lat = Column(Float)
