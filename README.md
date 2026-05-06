@@ -73,6 +73,18 @@ flask run
 
 ---
 
+## API Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | /api/users/register | Register new user |
+| POST | /api/rides/create | Create a new ride pool |
+| GET | /api/rides/match | Get matched rides by flight/location |
+| PUT | /api/rides/:id/status | Update ride status |
+| GET | /api/bookings/:userId | Get user bookings |
+
+---
+
 ## Skills Demonstrated
 
 `Python` `Flask` `PostgreSQL` `SQLAlchemy` `Alembic` `REST API` `MVC Architecture` `Database Design` `ORM`
