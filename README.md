@@ -87,7 +87,7 @@ flask run
 
 ## Skills Demonstrated
 
-`Python` `Flask` `PostgreSQL` `SQLAlchemy` `Alembic` `REST API` `MVC Architecture` `Database Design` `ORM`
+`Python` `FastAPI` `SQLite` `SQLAlchemy` `Alembic` `REST API` `MVC Architecture` `Database Design` `ORM`
 
 ---
 
