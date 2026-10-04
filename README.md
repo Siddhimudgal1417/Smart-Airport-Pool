@@ -50,7 +50,7 @@ cd Smart-Airport-Pool
 
 pip install -r requirements.txt
 
-# Configure your PostgreSQL connection in .env or config file
+# Configure your SQLite connection in .env or config file
 # Run migrations
 alembic upgrade head
 
@@ -58,7 +58,7 @@ alembic upgrade head
 python create_sample.py
 
 # Start the server
-flask run
+fastAPI run
 ```
 
 ---
