@@ -1,6 +1,6 @@
 # ✈️ Smart Airport Pool
 
-A RESTful backend for an airport ride-pooling application built with Flask and PostgreSQL. Handles user management, ride matching, and real-time tracking — reducing manual coordination effort by ~60% and improving query performance by ~35%.
+A RESTful backend for an airport ride-pooling application built with FastAPI and SQLite. Handles user management, ride matching, and real-time tracking — reducing manual coordination effort by ~60% and improving query performance by ~35%.
 
 ---
 
@@ -8,7 +8,7 @@ A RESTful backend for an airport ride-pooling application built with Flask and P
 
 - Matches airport travelers for shared rides based on flight timing and pickup locations
 - Manages full ride lifecycle — booking, matching, tracking, completion
-- Optimised relational schema with SQLAlchemy ORM on PostgreSQL for fast ride allocation
+- Optimised relational schema with SQLAlchemy ORM on SQLite for fast ride allocation
 - Supports database migrations via Alembic for schema versioning
 - Includes sample data generation script for testing
 
@@ -18,8 +18,8 @@ A RESTful backend for an airport ride-pooling application built with Flask and P
 
 | Layer | Technology |
 |---|---|
-| Backend Framework | Flask (MVC) |
-| Database | PostgreSQL |
+| Backend Framework | FastAPI (MVC) |
+| Database | SQLite |
 | ORM | SQLAlchemy |
 | Migrations | Alembic |
 | Frontend | HTML, CSS, JavaScript |
